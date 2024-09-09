@@ -55,5 +55,3 @@ frontend:
       - npm run build
   environment:
     VITE_API_URL: ${{ backend.functions.express.url }}
-    VITE_API_KEY: "HELLO"
-  subdomain: violet-favourite-locust
