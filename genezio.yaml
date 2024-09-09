@@ -16,7 +16,7 @@ backend:
   # Information about the backend's functions.
   functions:
     # The name (label) of the function.
-    - name: express-postgres-starter
+    - name: express
       # The path to the function's code.
       path: ./
       # The name of the function handler
@@ -25,6 +25,13 @@ backend:
       entry: app.js
       # The compatibility of the function handler.
       type: aws
+  # Scripts are running in the specified `path` directory.
+  scripts:
+    # List of scripts to run before deploying the frontend.
+    deploy: npm install
+    # List of scripts that build your frontend before deployment. It should populate the specified `publish` directory.
+    local: npm install
+
 # Information about the backend's services.
 services:
   # The name of the service.
@@ -33,5 +40,20 @@ services:
     - name: express-postgresql-starter
       # The region where the database is deployed.
       region: us-east-1
-      # The type of the database.
       type: postgres-neon
+frontend:
+  # The folder where the frontend scripts will run.
+  path: ./frontend
+  # Specifies information about the SDK generation. If not specified, the SDK will not be generated for this frontend.
+  # The directory that will be published to the CDN. It is relative to the `path` directory.
+  publish: ./dist
+  # Environment variables that will be injected into the frontend.
+  scripts:
+    # List of scripts to run before deploying the frontend.
+    deploy:
+      - npm install
+      - npm run build
+  environment:
+    VITE_API_URL: ${{ backend.functions.express.url }}
+    VITE_API_KEY: "HELLO"
+  subdomain: violet-favourite-locust
