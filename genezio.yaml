@@ -16,7 +16,7 @@ backend:
   # Information about the backend's functions.
   functions:
     # The name (label) of the function.
-    - name: express
+    - name: express-postgresql-starter
       # The path to the function's code.
       path: ./
       # The name of the function handler
@@ -50,8 +50,8 @@ frontend:
   # Environment variables that will be injected into the frontend.
   scripts:
     # List of scripts to run before deploying the frontend.
-    deploy:
-      - npm install
+    deploy: npm install
+    build:
       - npm run build
   environment:
-    VITE_API_URL: ${{ backend.functions.express.url }}
+    VITE_API_URL: ${{ backend.functions.express-postgresql-starter.url }}
