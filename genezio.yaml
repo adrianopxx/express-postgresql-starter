@@ -20,7 +20,7 @@ backend:
       # The path to the function's code.
       path: ./
       # The entry point for the function.
-      entry: app.js
+      entry: app.mjs
       # The compatibility of the function handler.
       type: httpServer
   # Scripts are running in the specified `path` directory.
