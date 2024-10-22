@@ -1,5 +1,5 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config');
+import { DataTypes } from 'sequelize';
+import sequelize from '../config.mjs';
 
 const User = sequelize.define('User', {
     email: {
@@ -21,5 +21,4 @@ sequelize.sync()
     .then(() => console.log('User table created'))
     .catch(err => console.log('Error: ' + err));
 
-module.exports = User;
-
+export default User;

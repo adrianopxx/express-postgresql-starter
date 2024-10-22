@@ -19,12 +19,10 @@ backend:
     - name: express-postgresql-starter
       # The path to the function's code.
       path: ./
-      # The name of the function handler
-      handler: handler
       # The entry point for the function.
       entry: app.js
       # The compatibility of the function handler.
-      type: aws
+      type: httpServer
   # Scripts are running in the specified `path` directory.
   scripts:
     # List of scripts to run before deploying the frontend.
@@ -37,7 +35,7 @@ services:
   # The name of the service.
   databases:
     # The name of the database.
-    - name: express-postgresql-starter
+    - name: my-postgres-db
       # The region where the database is deployed.
       region: us-east-1
       type: postgres-neon
@@ -55,3 +53,4 @@ frontend:
       - npm run build
   environment:
     VITE_API_URL: ${{ backend.functions.express-postgresql-starter.url }}
+  subdomain: emerald-encouraging-ocelot
