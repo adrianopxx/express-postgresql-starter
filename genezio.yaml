@@ -53,4 +53,3 @@ frontend:
       - npm run build
   environment:
     VITE_API_URL: ${{ backend.functions.express-postgresql-starter.url }}
-  subdomain: emerald-encouraging-ocelot
